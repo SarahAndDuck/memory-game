@@ -35,7 +35,7 @@ export function createLayout() {
   const pairsCounter = createElement('span', { id: 'pairs-count' }, '0 из 8')
 
   // scoreboard
-  const stats = createElement('div', { className: 'stats' },
+  const stats = createElement('section', { className: 'stats' },
     createElement('div', { className: 'stats__item' }, 'Ходы ', movesCounter),
     createElement('div', { className: 'stats__item' }, 'найденые пары ', pairsCounter)
   )
