@@ -22,7 +22,11 @@ export function createElement(tag, props = {}, ...children) {
     }
     // Установка классов
     else if (key === 'className') {
-      element.className = value
+      if (Array.isArray(value)) {
+        element.className = value.filter(Boolean).join(' ')
+      } else {
+        element.className = value
+      }
     }
     // Все остальные атрибуты 
     else {
