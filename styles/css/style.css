@@ -1,0 +1,42 @@
+@charset "UTF-8";
+/* Универсальный сброс отступов и настройка расчета размеров */
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Базовые настройки для тела страницы */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* Списки без точек */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Ссылки без подчеркивания */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Изображения */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Наследование шрифтов для элементов форм */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}/*# sourceMappingURL=style.css.map */
