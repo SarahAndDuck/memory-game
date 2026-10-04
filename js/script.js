@@ -2,6 +2,7 @@ import { createElement, clearElement } from './utils/dom.js';
 import { createDeck, shuffle } from './game/deck.js';
 import { createCardElement } from './components/card.js';
 import { state, resetState } from './game/state.js';
+import { handleCardSelect } from './game/gameLogic.js';
 
 
 // Ссылки на ключевые DOM-элементы страницы

@@ -46,8 +46,8 @@ select {
   --text-color: #1a202c;
   --primary-color: #3182ce;
   --primary-hover: #2b6cb0;
-  --card-bg: #2d3748;
-  --card-back-bg: #4a5568;
+  --card-bg: #4d5567;
+  --card-back-bg: #6d727b;
   --border-radius: 12px;
 }
 
@@ -246,6 +246,12 @@ body {
 }
 
 /* Переворот карточки при добавлении класса is-open или is-matched */
+.card.is-open .card__inner,
+.card.is-matched .card__inner {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
 /* Общие стили для обеих граней */
 .card__face {
   position: absolute;
@@ -253,7 +259,6 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  /* ⚠️ КЛЮЧЕВОЙ МОМЕНТ: прячет обратную сторону грани */
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   display: -webkit-box;
@@ -273,22 +278,18 @@ body {
           user-select: none;
 }
 
-/* 1. РУБАШКА (передняя грань) */
 .card__face--front {
   background-color: var(--card-bg, #2d3748);
   color: white;
 }
 
-/* 2. ЛИЦЕВАЯ СТОРОНА с цветком (задняя грань) */
 .card__face--back {
   background-color: white;
-  /* Изначально развернута на 180 градусов назад */
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
   border: 3px solid var(--primary-color, #3182ce);
 }
 
-/* Стиль для угаданной пары */
 .card.is-matched .card__face--back {
   border-color: #38a169;
   background-color: #f0fff4;
