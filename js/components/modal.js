@@ -1,4 +1,5 @@
 import { createElement } from '../utils/dom.js';
+import { getLeaderboard, saveScore } from '../game/leaderboard.js';
 /**
  * 
  * @param {Object} options 
@@ -68,6 +69,8 @@ export function showWinModal(movesCount, onRestart) {
     className: 'modal__text'
   }, `Поздравляем! Вы нашли все пары за ${movesCount} ходов.`)
 
+
+
   const restartBtn = createElement('button', {
     className: ['btn', 'btn--primary'],
     onClick: () => {
@@ -82,4 +85,37 @@ export function showWinModal(movesCount, onRestart) {
   })
 
   winModal.open()
+}
+
+export function showLeaderboardModal() {
+  const scores = getLeaderboard()
+  let bodyContent
+  if (scores.length === 0) {
+    bodyContent = createElement('p', { className: 'modal__text' }, 'здесь могла бы быть ваша реклама')
+  } else {
+    const rows = scores.map((score, index) => {
+      return createElement('tr', {},
+        createElement('td', {}, `${index + 1}`),
+        createElement('td', {}, score.name),
+        createElement('td', {}, String(score.moves))
+      )
+    })
+    const tableHeader = createElement('thead', {},
+      createElement('tr', {},
+        createElement('th', {}, 'Место'),
+        createElement('th', {}, 'Имя'),
+        createElement('th', {}, 'Ходы')
+      )
+    )
+    const tableBody = createElement('tbody', {}, ...rows)
+    bodyContent = createElement('table', {
+      className: 'leaderboard-table'
+    }, tableHeader, tableBody)
+  }
+
+  const modal = createModal({
+    title: 'Таблица лидеров',
+    content: [bodyContent],
+  })
+  modal.open()
 }

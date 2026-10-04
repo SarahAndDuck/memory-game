@@ -3,7 +3,7 @@ const MAX_LEADERBOARD_ITEMS = 10
 
 
 /**
- * @returns {Array<{name: staring, moves:number,date:string}>}
+ * @returns {Array<{name: string, moves:number}>}
  */
 export function getLeaderboard() {
 
