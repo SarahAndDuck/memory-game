@@ -3,7 +3,7 @@ import { createDeck, shuffle } from './game/deck.js';
 import { createCardElement } from './components/card.js';
 import { state, resetState } from './game/state.js';
 import { handleCardSelect } from './game/gameLogic.js';
-
+import { showWinModal } from './components/modal.js';
 
 // Ссылки на ключевые DOM-элементы страницы
 let boardElement = null;
@@ -49,7 +49,10 @@ export function startNewGame() {
       handleCardSelect(data, idx, element, {
         onUpdateScoreboard: updateScoreboard,
         onWin: (finalMoves) => {
-          console.log(`ПОБЕДА! Игра завершена за ${finalMoves} ходов!`);
+          showWinModal(finalMoves, () => {
+            startNewGame()
+          })
+          // console.log(`ПОБЕДА! Игра завершена за ${finalMoves} ходов!`);
           // На Этапе 6 здесь будет вызов универсального модального окна победы
         }
       });

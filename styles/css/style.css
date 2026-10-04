@@ -293,4 +293,133 @@ body {
 .card.is-matched .card__face--back {
   border-color: #38a169;
   background-color: #f0fff4;
+}
+
+/* Модальное окно и оверлей */
+.modal__overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+  -webkit-animation: fadeIn 0.2s ease-out;
+          animation: fadeIn 0.2s ease-out;
+}
+
+.modal__window {
+  background-color: #ffffff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 420px;
+  -webkit-box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  -webkit-animation: scaleUp 0.2s ease-out;
+          animation: scaleUp 0.2s ease-out;
+}
+
+.modal__header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.modal__title {
+  margin: 0;
+  font-size: 1.4rem;
+  color: #2d3748;
+}
+
+.modal__close-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #a0aec0;
+  padding: 4px;
+}
+
+.modal__close-btn:hover {
+  color: #2d3748;
+}
+
+.modal__body {
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 16px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.modal__text {
+  font-size: 1.1rem;
+  color: #4a5568;
+  margin: 0;
+}
+
+/* Анимации появления */
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes scaleUp {
+  from {
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes scaleUp {
+  from {
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
 }/*# sourceMappingURL=style.css.map */
