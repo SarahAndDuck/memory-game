@@ -3,7 +3,7 @@ import { createDeck, shuffle } from './game/deck.js';
 import { createCardElement } from './components/card.js';
 import { state, resetState } from './game/state.js';
 import { handleCardSelect } from './game/gameLogic.js';
-import { showWinModal } from './components/modal.js';
+import { showWinModal, showLeaderboardModal } from './components/modal.js';
 
 // Ссылки на ключевые DOM-элементы страницы
 let boardElement = null;
@@ -88,7 +88,7 @@ function createAppLayout() {
     className: ['btn', 'btn--leaderboard'],
     'aria-label': 'Открыть таблицу лидеров',
     onClick: () => {
-      console.log('Клик: Таблица лидеров (откроется в Этапе 7)');
+      showLeaderboardModal();
     }
   }, 'Таблица лидеров');
 

@@ -70,18 +70,45 @@ export function showWinModal(movesCount, onRestart) {
   }, `Поздравляем! Вы нашли все пары за ${movesCount} ходов.`)
 
 
+  const inputLabel = createElement('label', {
+    className: 'modal__label',
+    for: 'player-name',
 
-  const restartBtn = createElement('button', {
+  }, 'Введите ваше имя для таблицы лидеров:')
+
+  const nameInput = createElement('input', {
+    type: 'text',
+    id: 'player-name',
+    className: 'modal__input',
+    placeholder: 'Тёмная лошадка',
+    maxLenght: 15
+  }
+  )
+
+  const saveAdnRestartBtn = createElement('button', {
     className: ['btn', 'btn--primary'],
     onClick: () => {
+      const playerName = nameInput.value;
+      saveScore(playerName, movesCount)
       winModal.close()
       onRestart()
     }
-  }, 'Сыграть ещё раз')
+
+  }, 'Сохранить и сыграть ещё раз')
+
+
+
+  // const restartBtn = createElement('button', {
+  //   className: ['btn', 'btn--primary'],
+  //   onClick: () => {
+  //     winModal.close()
+  //     onRestart()
+  //   }
+  // }, 'Сыграть ещё раз')
 
   const winModal = createModal({
     title: '🎉 Победа!',
-    content: [message, restartBtn]
+    content: [message, inputLabel, nameInput, saveAdnRestartBtn]
   })
 
   winModal.open()
@@ -97,8 +124,8 @@ export function showLeaderboardModal() {
       return createElement('tr', {},
         createElement('td', {}, `${index + 1}`),
         createElement('td', {}, score.name),
+        createElement('td', {}, String(score.moves)),
         createElement('td', {}, score.date),
-        createElement('td', {}, String(score.moves))
       )
     })
     const tableHeader = createElement('thead', {},
