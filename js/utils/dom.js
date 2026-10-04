@@ -4,7 +4,7 @@
  * @param {...(Node|string)} children 
  * @returns {HTMLElement}
  */
-
+// создание элемента 
 export function createElement(tag, props = {}, ...children) {
   const element = document.createElement(tag)
 
@@ -54,7 +54,7 @@ export function createElement(tag, props = {}, ...children) {
 /** 
  * @param {HTMLElement} element 
  */
-
+// очищение от вложенний
 export function clearElement(element) {
   element.replaceChildren()
 }
