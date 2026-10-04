@@ -97,6 +97,7 @@ export function showLeaderboardModal() {
       return createElement('tr', {},
         createElement('td', {}, `${index + 1}`),
         createElement('td', {}, score.name),
+        createElement('td', {}, score.date),
         createElement('td', {}, String(score.moves))
       )
     })
@@ -104,7 +105,8 @@ export function showLeaderboardModal() {
       createElement('tr', {},
         createElement('th', {}, 'Место'),
         createElement('th', {}, 'Имя'),
-        createElement('th', {}, 'Ходы')
+        createElement('th', {}, 'Ходы'),
+        createElement('th', {}, 'Дата')
       )
     )
     const tableBody = createElement('tbody', {}, ...rows)

@@ -3,7 +3,7 @@ const MAX_LEADERBOARD_ITEMS = 10
 
 
 /**
- * @returns {Array<{name: string, moves:number}>}
+ * @returns {Array<{name: string, moves:number,date: string}>}
  */
 export function getLeaderboard() {
 
@@ -25,6 +25,7 @@ export function saveScore(name, moves) {
     const newEntry = {
       name: trimmedName,
       moves: moves,
+      date: new Date().toLocaleDateString('ru-RU')
     }
     leaderboard.push(newEntry)
   }
