@@ -118,7 +118,7 @@ export function showLeaderboardModal() {
   const scores = getLeaderboard()
   let bodyContent
   if (scores.length === 0) {
-    bodyContent = createElement('p', { className: 'modal__text' }, 'здесь могла бы быть ваша реклама')
+    bodyContent = createElement('p', { className: 'modal__text' }, 'Рейтинг пуст.Сыграйте раунд, чтобы попасть сюда.')
   } else {
     const rows = scores.map((score, index) => {
       return createElement('tr', {},

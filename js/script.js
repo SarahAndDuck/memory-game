@@ -52,8 +52,7 @@ export function startNewGame() {
           showWinModal(finalMoves, () => {
             startNewGame()
           })
-          // console.log(`ПОБЕДА! Игра завершена за ${finalMoves} ходов!`);
-          // На Этапе 6 здесь будет вызов универсального модального окна победы
+          
         }
       });
     });
