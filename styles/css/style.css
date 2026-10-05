@@ -1,0 +1,449 @@
+@charset "UTF-8";
+/* Универсальный сброс отступов и настройка расчета размеров */
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Базовые настройки для тела страницы */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* Списки без точек */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Ссылки без подчеркивания */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Изображения */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Наследование шрифтов для элементов форм */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+:root {
+  --bg-color: #f0f4f8;
+  --text-color: #1a202c;
+  --primary-color: #3182ce;
+  --primary-hover: #2b6cb0;
+  --card-bg: #4d5567;
+  --card-back-bg: #6d727b;
+  --border-radius: 12px;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#app {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 20px;
+  background: linear-gradient(135deg, #4299e1 0%, #667eea 50%, #9f7aea 100%);
+  -webkit-filter: drop-shadow(0px 3px 2px rgba(102, 126, 234, 0.25));
+          filter: drop-shadow(0px 3px 2px rgba(102, 126, 234, 0.25));
+}
+
+.stats {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  background: #ffffff;
+  padding: 15px;
+  border-radius: var(--border-radius);
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  font-weight: 600;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+}
+
+.header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header__title {
+  font-size: 2rem;
+  font-weight: 800;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 8;
+  cursor: default;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: -webkit-transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), -webkit-transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  color: var(--bg-color);
+}
+
+.header__title-icon {
+  font-size: 1.8rem;
+  -webkit-text-fill-color: initial;
+  display: inline-block;
+  -webkit-animation: float 3s ease-in-out infinite;
+          animation: float 3s ease-in-out infinite;
+}
+
+.header__controls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: #f43f8c;
+  color: #ffffff;
+  border: 2px solid var --primary-color;
+  -webkit-transition: background-color 0.2s ease, -webkit-transform 0.3s;
+  transition: background-color 0.2s ease, -webkit-transform 0.3s;
+  transition: transform 0.3s, background-color 0.2s ease;
+  transition: transform 0.3s, background-color 0.2s ease, -webkit-transform 0.3s;
+}
+
+.btn--new-game {
+  border: 2px solid var --primary-color;
+}
+
+.btn :hover {
+  background-color: #df2a78;
+}
+
+.btn--leaderboard:hover {
+  -webkit-transform: scale(1.05) rotate(2deg);
+      -ms-transform: scale(1.05) rotate(2deg);
+          transform: scale(1.05) rotate(2deg);
+  border-color: var(--primary-hover);
+}
+
+.btn--new-game:hover {
+  -webkit-transform: scale(1.05) rotate(-2deg);
+      -ms-transform: scale(1.05) rotate(-2deg);
+          transform: scale(1.05) rotate(-2deg);
+  border-color: var(--primary-hover);
+}
+
+@-webkit-keyframes float {
+  0%, 100% {
+    -webkit-transform: translateY(0) rotate(0deg);
+            transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    -webkit-transform: translateY(-4px) rotate(6deg);
+            transform: translateY(-4px) rotate(6deg);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    -webkit-transform: translateY(0) rotate(0deg);
+            transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    -webkit-transform: translateY(-4px) rotate(6deg);
+            transform: translateY(-4px) rotate(6deg);
+  }
+}
+/* Кнопка-карточка */
+.card {
+  aspect-ratio: 1;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+  padding: 0;
+  outline: none;
+}
+
+/* Внутренний контейнер, который поворачивается */
+.card__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  -webkit-transition: -webkit-transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: -webkit-transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d; /* Сохраняет 3D для граней */
+  border-radius: var(--border-radius);
+  -webkit-box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Переворот карточки при добавлении класса is-open или is-matched */
+.card.is-open .card__inner,
+.card.is-matched .card__inner {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+/* Общие стили для обеих граней */
+.card__face {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: var(--border-radius);
+  font-size: 2.2rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.card__face--front {
+  background-color: var(--card-bg, #2d3748);
+  color: white;
+}
+
+.card__face--back {
+  background-color: white;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+  border: 3px solid var(--primary-color, #3182ce);
+}
+
+.card.is-matched .card__face--back {
+  border-color: #38a169;
+  background-color: #f0fff4;
+}
+
+/* Модальное окно и оверлей */
+.modal__overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+  -webkit-animation: fadeIn 0.2s ease-out;
+          animation: fadeIn 0.2s ease-out;
+}
+
+.modal__window {
+  background-color: #ffffff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 420px;
+  -webkit-box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  -webkit-animation: scaleUp 0.2s ease-out;
+          animation: scaleUp 0.2s ease-out;
+}
+
+.modal__header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.modal__title {
+  margin: 0;
+  font-size: 1.4rem;
+  color: #2d3748;
+}
+
+.modal__close-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #a0aec0;
+  padding: 4px;
+}
+
+.modal__close-btn:hover {
+  color: #2d3748;
+}
+
+.modal__body {
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 16px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.modal__text {
+  font-size: 1.1rem;
+  color: #4a5568;
+  margin: 0;
+}
+
+.modal__label {
+  font-size: 0.9rem;
+  color: #4a5568;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+
+.modal__input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.modal__input:focus {
+  border-color: #3182ce;
+  -webkit-box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.15);
+          box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.15);
+}
+
+/* Анимации появления */
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes scaleUp {
+  from {
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes scaleUp {
+  from {
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}/*# sourceMappingURL=style.css.map */

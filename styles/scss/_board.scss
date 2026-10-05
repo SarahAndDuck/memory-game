@@ -1,0 +1,11 @@
+.board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  perspective: 1000px;
+}
+
+.card {
+}
+.card__inner {
+}
